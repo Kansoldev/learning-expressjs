@@ -1,0 +1,16 @@
+{
+  "name": "express-crash-course",
+  "version": "1.0.0",
+  "description": "Learning how Express.js works",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node --watch server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
