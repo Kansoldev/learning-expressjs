@@ -17,8 +17,18 @@ let posts = [
   },
 ];
 
+// A middleware takes in 3 parameters (a request, a response and a next function)
+// The job of the next function is to call the next middleware in the stack
+const logger = (req, res, next) => {
+  console.log(
+    `${req.method} ${req.protocol}://${req.get("host")}${req.originalUrl}`,
+  );
+  next();
+};
+
 // Get all posts
-router.get("/", (req, res) => {
+// running the logger middleware at the route level
+router.get("/", logger, (req, res) => {
   const limit = parseInt(req.query.limit);
 
   if (!isNaN(limit) && limit > 0) {
