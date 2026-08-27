@@ -30,4 +30,14 @@ app.get("/api/posts", (req, res) => {
   res.json(posts);
 });
 
+// Get a single post
+app.get("/api/posts/:id", (req, res) => {
+  /*
+    Get the id passed from the url. req.params returns a string,
+    so using parseInt() converts it into a number
+  */
+  const id = parseInt(req.params.id);
+  res.json(posts.filter((post) => post.id === id));
+});
+
 app.listen(port, () => console.log("Server running"));
