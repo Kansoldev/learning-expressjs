@@ -61,4 +61,27 @@ router.post("/create", (req, res) => {
   res.status(201).json(posts);
 });
 
+// Update post
+router.put("/update/:id", (req, res) => {
+  // Get the id of the post
+  const id = parseInt(req.params.id);
+
+  const post = posts.find((post) => post.id === id);
+
+  if (!post) {
+    return res.status(404).json({ msg: "Post doesn't exists" });
+  }
+
+  post.title = req.body?.title || post.title;
+
+  res.status(200).json(posts);
+});
+
+// Delete post
+router.delete("/delete/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  const refinedPosts = posts.filter((post) => post.id !== id);
+  res.status(200).json(refinedPosts);
+});
+
 export default router;
