@@ -7,6 +7,14 @@ const port = process.env.PORT || 8080;
 // Initialize express
 const app = express();
 
+// Body parser middleware
+app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: false,
+  }),
+);
+
 // Setting up a static server in Express for loading static files
 // app.use(express.static(path.join(__dirname, "public")));
 
